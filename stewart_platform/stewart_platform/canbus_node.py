@@ -94,21 +94,21 @@ class CAN_Tx_Rx(Node):
             self.get_logger().error('No feedback msg on bus received')
         
         elif rx_msg.arbitration_id == 0xF0:
-            pub_msg.position_1 = rx_msg.data[0]
-            pub_msg.position_2 = rx_msg.data[1]
-            pub_msg.position_3 = rx_msg.data[2]
-            pub_msg.position_4 = rx_msg.data[3]
-            pub_msg.position_5 = rx_msg.data[4]
-            pub_msg.position_6 = rx_msg.data[5]
+            pub_msg.position_1 = float(rx_msg.data[0])
+            pub_msg.position_2 = float(rx_msg.data[1])
+            pub_msg.position_3 = float(rx_msg.data[2])
+            pub_msg.position_4 = float(rx_msg.data[3])
+            pub_msg.position_5 = float(rx_msg.data[4])
+            pub_msg.position_6 = float(rx_msg.data[5])
             self.get_logger().info('Position feedback received')
         
         elif rx_msg.arbitration_id == 0xF1:
-            pub_msg.velocity_1 = rx_msg.data[0]
-            pub_msg.velocity_2 = rx_msg.data[1]
-            pub_msg.velocity_3 = rx_msg.data[2]
-            pub_msg.velocity_4 = rx_msg.data[3]
-            pub_msg.velocity_5 = rx_msg.data[4]
-            pub_msg.velocity_6 = rx_msg.data[5]
+            pub_msg.velocity_1 = float(rx_msg.data[0])
+            pub_msg.velocity_2 = float(rx_msg.data[1])
+            pub_msg.velocity_3 = float(rx_msg.data[2])
+            pub_msg.velocity_4 = float(rx_msg.data[3])
+            pub_msg.velocity_5 = float(rx_msg.data[4])
+            pub_msg.velocity_6 = float(rx_msg.data[5])
         
         self.publisher_.publish(pub_msg)
 
