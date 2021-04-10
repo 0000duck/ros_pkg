@@ -44,7 +44,7 @@ class CAN_Tx_Rx(Node):
         self.get_logger().info('CAN-bus down')
 
 
-    def conv_pos_out( input ):
+    def conv_pos_out(self, input):
         out_max = 255.0
         in_min = 0.0
         in_max = 0.09
@@ -53,7 +53,7 @@ class CAN_Tx_Rx(Node):
         return int(out_pos + 0.5)
 
 
-    def conv_vel_out( input ):
+    def conv_vel_out(self, input):
             out_max = 255.0
             in_min = -0.06
             in_max = 0.06
