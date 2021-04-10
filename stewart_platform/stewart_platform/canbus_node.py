@@ -66,20 +66,20 @@ class CAN_Tx_Rx(Node):
         self.get_logger().info('Setpoints received')
 
         pos_tx = can.Message(arbitration_id=0xA0,data=[
-            self.conv_pos_out(msg.position[0]),
-            self.conv_pos_out(msg.position[1]),
-            self.conv_pos_out(msg.position[2]),
-            self.conv_pos_out(msg.position[3]),
-            self.conv_pos_out(msg.position[4]),
-            self.conv_pos_out(msg.position[5]),0], extended_id=False)
+            self.conv_pos_out(msg.position_1),
+            self.conv_pos_out(msg.position_2),
+            self.conv_pos_out(msg.position_3),
+            self.conv_pos_out(msg.position_4),
+            self.conv_pos_out(msg.position_5),
+            self.conv_pos_out(msg.position_6),0], extended_id=False)
         
         vel_tx = can.Message(arbitration_id=0xA1,data=[
-            self.conv_vel_out(msg.velocity[0]),
-            self.conv_vel_out(msg.velocity[1]),
-            self.conv_vel_out(msg.velocity[2]),
-            self.conv_vel_out(msg.velocity[3]),
-            self.conv_vel_out(msg.velocity[4]),
-            self.conv_vel_out(msg.velocity[5]),0],extended_id=False)
+            self.conv_vel_out(msg.velocity_1),
+            self.conv_vel_out(msg.velocity_2),
+            self.conv_vel_out(msg.velocity_3),
+            self.conv_vel_out(msg.velocity_4),
+            self.conv_vel_out(msg.velocity_5),
+            self.conv_vel_out(msg.velocity_6),0],extended_id=False)
         
         bus.send(pos_tx)
         bus.send(vel_tx)
@@ -94,21 +94,21 @@ class CAN_Tx_Rx(Node):
             self.get_logger().error('No feedback msg on bus received')
         
         elif rx_msg.arbitration_id == 0xF0:
-            pub_msg.position[0] = rx_msg.data[0]
-            pub_msg.position[1] = rx_msg.data[1]
-            pub_msg.position[2] = rx_msg.data[2]
-            pub_msg.position[3] = rx_msg.data[3]
-            pub_msg.position[4] = rx_msg.data[4]
-            pub_msg.position[5] = rx_msg.data[5]
+            pub_msg.position_1 = rx_msg.data[0]
+            pub_msg.position_2 = rx_msg.data[1]
+            pub_msg.position_3 = rx_msg.data[2]
+            pub_msg.position_4 = rx_msg.data[3]
+            pub_msg.position_5 = rx_msg.data[4]
+            pub_msg.position_6 = rx_msg.data[5]
             self.get_logger().info('Position feedback received')
         
         elif rx_msg.arbitration_id == 0xF1:
-            pub_msg.velocity[0] = rx_msg.data[0]
-            pub_msg.velocity[1] = rx_msg.data[1]
-            pub_msg.velocity[2] = rx_msg.data[2]
-            pub_msg.velocity[3] = rx_msg.data[3]
-            pub_msg.velocity[4] = rx_msg.data[4]
-            pub_msg.velocity[5] = rx_msg.data[5]
+            pub_msg.velocity_1 = rx_msg.data[0]
+            pub_msg.velocity_2 = rx_msg.data[1]
+            pub_msg.velocity_3 = rx_msg.data[2]
+            pub_msg.velocity_4 = rx_msg.data[3]
+            pub_msg.velocity_5 = rx_msg.data[4]
+            pub_msg.velocity_6 = rx_msg.data[5]
         
         self.publisher_.publish(pub_msg)
 

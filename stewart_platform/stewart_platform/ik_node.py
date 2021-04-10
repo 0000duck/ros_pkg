@@ -27,19 +27,19 @@ class IK(Node):
         stroke_length = ck.calc_kinematics(msg.x, msg.y, msg.z, msg.roll, msg.pitch, msg.yaw)
 
         pub_msg = PosVel()
-        pub_msg.position[0] = stroke_length[0]
-        pub_msg.position[1] = stroke_length[1]
-        pub_msg.position[2] = stroke_length[2]
-        pub_msg.position[3] = stroke_length[3]
-        pub_msg.position[4] = stroke_length[4]
-        pub_msg.position[5] = stroke_length[5]
+        pub_msg.position_1 = stroke_length[0]
+        pub_msg.position_2 = stroke_length[1]
+        pub_msg.position_3 = stroke_length[2]
+        pub_msg.position_4 = stroke_length[3]
+        pub_msg.position_5 = stroke_length[4]
+        pub_msg.position_6 = stroke_length[5]
 
-        pub_msg.velocity[0] = 0
-        pub_msg.velocity[1] = 0
-        pub_msg.velocity[2] = 0
-        pub_msg.velocity[3] = 0
-        pub_msg.velocity[4] = 0
-        pub_msg.velocity[5] = 0
+        pub_msg.velocity_1 = 0
+        pub_msg.velocity_2 = 0
+        pub_msg.velocity_3 = 0
+        pub_msg.velocity_4 = 0
+        pub_msg.velocity_5 = 0
+        pub_msg.velocity_6 = 0
 
         self.get_logger().info('IK calculated')
 
