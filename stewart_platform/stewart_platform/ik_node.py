@@ -22,6 +22,7 @@ class IK(Node):
             10)
         
         self.prev_stroke_length = np.zeros(6)
+        self.first_vel = True
 
 
     def listener_callback(self, msg):
@@ -37,7 +38,7 @@ class IK(Node):
         pub_msg.position_5 = stroke_length[4]
         pub_msg.position_6 = stroke_length[5]
 
-        if self.count == 0:
+        if self.first_vel == True:
             pub_msg.velocity_1 = 0.0
             pub_msg.velocity_2 = 0.0
             pub_msg.velocity_3 = 0.0
@@ -57,6 +58,8 @@ class IK(Node):
         self.prev_stroke_length = stroke_length
 
         self.get_logger().info('IK calculated')
+
+        self.first_vel = False
 
 
 
