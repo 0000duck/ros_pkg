@@ -1,5 +1,6 @@
 import rclpy
 from stewart_platform import calc_kinematics as ck
+import numpy as np
 
 from rclpy.node import Node
 from stewart_interfaces.msg import PosVel, DOF
@@ -19,6 +20,8 @@ class IK(Node):
             PosVel,
             'setpoint',
             10)
+        
+        self.prev_stroke_length = np.zeros(6)
 
 
     def listener_callback(self, msg):
@@ -34,16 +37,26 @@ class IK(Node):
         pub_msg.position_5 = stroke_length[4]
         pub_msg.position_6 = stroke_length[5]
 
-        pub_msg.velocity_1 = 0.0
-        pub_msg.velocity_2 = 0.0
-        pub_msg.velocity_3 = 0.0
-        pub_msg.velocity_4 = 0.0
-        pub_msg.velocity_5 = 0.0
-        pub_msg.velocity_6 = 0.0
-
-        self.get_logger().info('IK calculated')
+        if self.count == 0:
+            pub_msg.velocity_1 = 0.0
+            pub_msg.velocity_2 = 0.0
+            pub_msg.velocity_3 = 0.0
+            pub_msg.velocity_4 = 0.0
+            pub_msg.velocity_5 = 0.0
+            pub_msg.velocity_6 = 0.0
+        else:
+            pub_msg.velocity_1 = (stroke_length[0] - prev_stroke_length[0]) / ck.sample_rate
+            pub_msg.velocity_2 = (stroke_length[1] - prev_stroke_length[1]) / ck.sample_rate
+            pub_msg.velocity_3 = (stroke_length[2] - prev_stroke_length[2]) / ck.sample_rate
+            pub_msg.velocity_4 = (stroke_length[3] - prev_stroke_length[3]) / ck.sample_rate
+            pub_msg.velocity_5 = (stroke_length[4] - prev_stroke_length[4]) / ck.sample_rate
+            pub_msg.velocity_6 = (stroke_length[5] - prev_stroke_length[5]) / ck.sample_rate
 
         self.publisher_.publish(pub_msg)
+
+        self.prev_stroke_length = stroke_length
+
+        self.get_logger().info('IK calculated')
 
 
 
