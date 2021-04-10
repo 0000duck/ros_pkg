@@ -34,12 +34,12 @@ class IK(Node):
         pub_msg.position_5 = stroke_length[4]
         pub_msg.position_6 = stroke_length[5]
 
-        pub_msg.velocity_1 = 0
-        pub_msg.velocity_2 = 0
-        pub_msg.velocity_3 = 0
-        pub_msg.velocity_4 = 0
-        pub_msg.velocity_5 = 0
-        pub_msg.velocity_6 = 0
+        pub_msg.velocity_1 = 0.0
+        pub_msg.velocity_2 = 0.0
+        pub_msg.velocity_3 = 0.0
+        pub_msg.velocity_4 = 0.0
+        pub_msg.velocity_5 = 0.0
+        pub_msg.velocity_6 = 0.0
 
         self.get_logger().info('IK calculated')
 
