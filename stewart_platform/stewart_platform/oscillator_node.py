@@ -15,7 +15,7 @@ class Oscillator(Node):
             'dof',
             10)
 
-        self.data = ck.oscillator(0.2, 0.2, 0, 0, 0.02, 0, 0, 0)
+        self.data = ck.oscillator(0.2, 0.25, 0, 0, 0.025, 5, 5, 0)
 
         timer_period = 0.01 #seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
