@@ -19,13 +19,13 @@ class CAN_Tx_Rx(Node):
         time.sleep(0.1)
 
         try:
-            bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+            self.bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
         except OSError:
             self.get_logger().error('Cannot find PiCAN board!')
             exit()
 
         start = can.Message(arbitration_id=0xB0,data=[4],extended_id=False)
-        bus.send(start)
+        self.bus.send(start)
         
         self.subscription = self.create_subscription(
             PosVel,
@@ -81,14 +81,14 @@ class CAN_Tx_Rx(Node):
             self.conv_vel_out(msg.velocity_5),
             self.conv_vel_out(msg.velocity_6),0],extended_id=False)
         
-        bus.send(pos_tx)
-        bus.send(vel_tx)
+        self.bus.send(pos_tx)
+        self.bus.send(vel_tx)
 
         self.get_logger().info('CAN msgs transmitted')
 
         pub_msg = PosVel()
 
-        rx_msg = bus.recv(0.002)
+        rx_msg = self.bus.recv(0.002)
         
         if rx_msg is None:
             self.get_logger().error('No feedback msg on bus received')
