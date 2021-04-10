@@ -46,12 +46,12 @@ class IK(Node):
             pub_msg.velocity_5 = 0.0
             pub_msg.velocity_6 = 0.0
         else:
-            pub_msg.velocity_1 = (stroke_length[0] - prev_stroke_length[0]) / ck.sample_rate
-            pub_msg.velocity_2 = (stroke_length[1] - prev_stroke_length[1]) / ck.sample_rate
-            pub_msg.velocity_3 = (stroke_length[2] - prev_stroke_length[2]) / ck.sample_rate
-            pub_msg.velocity_4 = (stroke_length[3] - prev_stroke_length[3]) / ck.sample_rate
-            pub_msg.velocity_5 = (stroke_length[4] - prev_stroke_length[4]) / ck.sample_rate
-            pub_msg.velocity_6 = (stroke_length[5] - prev_stroke_length[5]) / ck.sample_rate
+            pub_msg.velocity_1 = (stroke_length[0] - self.prev_stroke_length[0]) / ck.sample_rate
+            pub_msg.velocity_2 = (stroke_length[1] - self.prev_stroke_length[1]) / ck.sample_rate
+            pub_msg.velocity_3 = (stroke_length[2] - self.prev_stroke_length[2]) / ck.sample_rate
+            pub_msg.velocity_4 = (stroke_length[3] - self.prev_stroke_length[3]) / ck.sample_rate
+            pub_msg.velocity_5 = (stroke_length[4] - self.prev_stroke_length[4]) / ck.sample_rate
+            pub_msg.velocity_6 = (stroke_length[5] - self.prev_stroke_length[5]) / ck.sample_rate
 
         self.publisher_.publish(pub_msg)
 
