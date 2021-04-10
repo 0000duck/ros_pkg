@@ -23,6 +23,9 @@ class CAN_Tx_Rx(Node):
         except OSError:
             self.get_logger().error('Cannot find PiCAN board!')
             exit()
+
+        start = can.Message(arbitration_id=0xB0,data=[4],extended_id=False)
+        bus.send(start)
         
         self.subscription = self.create_subscription(
             PosVel,
