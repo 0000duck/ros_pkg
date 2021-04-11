@@ -38,7 +38,14 @@ class MessageHandler():
         in_max = 0.06
         out_pos = (input - in_min) * (out_max / (in_max - in_min))
 
-        return int(out_pos + 0.5)
+        output = int(out_pos + 0.5)
+
+        if output > 255:
+            output = 255
+        else if output < 0:
+            output = 0
+
+        return output
 
 
 
