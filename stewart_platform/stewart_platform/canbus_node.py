@@ -42,7 +42,7 @@ class MessageHandler():
 
         if output > 255:
             output = 255
-        else if output < 0:
+        elif output < 0:
             output = 0
 
         return output
