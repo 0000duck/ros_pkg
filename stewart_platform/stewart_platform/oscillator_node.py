@@ -12,7 +12,7 @@ class Oscillator(Node):
         
         self.publisher_ = self.create_publisher(
             DOF,
-            'dof',
+            'dof_setpoint',
             10)
 
         self.data = ck.oscillator(0.2, 0.25, 0, 0, 0.025, 5, 5, 0)

@@ -2,11 +2,6 @@ import numpy as np
 from math import pi
 
 
-t_max = 60
-sample_rate = 0.01
-no_sample = int(t_max / sample_rate)
-
-
 def oscillator(trans_adj, rot_adj, surge_a_adj, sway_a_adj,
                heave_a_adj, roll_a_adj, pitch_a_adj, yaw_a_adj):
     trans_freq = trans_adj  # translation signal frequency

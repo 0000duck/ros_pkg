@@ -21,7 +21,6 @@ setup(
     entry_points={
         'console_scripts': [
             'canbus = stewart_platform.canbus_node:main',
-            'ik = stewart_platform.ik_node:main',
             'oscillator = stewart_platform.oscillator_node:main'
         ],
     },
