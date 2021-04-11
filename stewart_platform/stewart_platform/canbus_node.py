@@ -41,9 +41,9 @@ class MessageHandler():
         output = int(out_pos + 0.5)
 
         if output > 255:
-            output = 255
+            output = 255.0
         elif output < 0:
-            output = 0
+            output = 0.0
 
         return output
 
