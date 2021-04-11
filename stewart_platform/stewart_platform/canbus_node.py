@@ -23,9 +23,6 @@ class CAN_Tx_Rx(Node):
         except OSError:
             self.get_logger().error('Cannot find PiCAN board!')
             exit()
-
-        start = can.Message(arbitration_id=0xB0,data=[4],extended_id=False)
-        self.bus.send(start)
         
         self.subscription = self.create_subscription(
             PosVel,
@@ -37,6 +34,12 @@ class CAN_Tx_Rx(Node):
             PosVel,
             'feedback',
             10)
+
+        self.pos = can.Message(arbitration_id=0xA0, data=[127, 127, 127, 127, 127, 127], extended_id=False)
+        self.vel = can.Message(arbitration_id=0xA1, data=[127, 127, 127, 127, 127, 127], extended_id=False)
+
+        self.task_pos = can.send_periodic(self.bus, self.pos, 0.01)
+        self.task_vel = can.send_periodic(self.bus, self.vel, 0.01)
 
 
     def __del__(self):
