@@ -35,8 +35,8 @@ class CAN_Tx_Rx(Node):
             'feedback',
             10)
 
-        self.pos = can.Message(arbitration_id=0xA0, data=[127, 127, 127, 127, 127, 127], extended_id=False)
-        self.vel = can.Message(arbitration_id=0xA1, data=[127, 127, 127, 127, 127, 127], extended_id=False)
+        self.pos = can.Message(arbitration_id=0xA0, data=[128, 128, 128, 128, 128, 128], extended_id=False)
+        self.vel = can.Message(arbitration_id=0xA1, data=[128, 128, 128, 128, 128, 128], extended_id=False)
 
         self.task_pos = can.send_periodic(self.bus, self.pos, 0.01)
         self.task_vel = can.send_periodic(self.bus, self.vel, 0.01)
