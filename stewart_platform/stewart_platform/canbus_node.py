@@ -134,7 +134,7 @@ class CANbus(Node):
 
         self.prev_length = leg_lenght
         
-        self.leg_pub.publish(msg)
+        #self.leg_pub.publish(msg)
 
         '''
         leg_msg = PosVel()
