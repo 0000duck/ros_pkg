@@ -106,7 +106,7 @@ class CANbus(Node):
 
         leg_lenght = ik.calc_kinematics(msg.x, msg.y, msg.z, msg.roll, msg.pitch, msg.yaw)
 
-        self.pos_frame.data=[
+        self.msg_handler.pos_frame.data=[
             self.msg_handler.conv_pos_out(leg_lenght[0]),
             self.msg_handler.conv_pos_out(leg_lenght[1]),
             self.msg_handler.conv_pos_out(leg_lenght[2]),
@@ -114,7 +114,7 @@ class CANbus(Node):
             self.msg_handler.conv_pos_out(leg_lenght[4]),
             self.msg_handler.conv_pos_out(leg_lenght[5])]
         
-        self.vel_frame.data=[
+        self.msg_handler.vel_frame.data=[
             self.msg_handler.conv_vel_out((leg_lenght[0] - self.prev_length[0]) / 0.01),
             self.msg_handler.conv_vel_out((leg_lenght[1] - self.prev_length[1]) / 0.01),
             self.msg_handler.conv_vel_out((leg_lenght[2] - self.prev_length[2]) / 0.01),
@@ -122,8 +122,8 @@ class CANbus(Node):
             self.msg_handler.conv_vel_out((leg_lenght[4] - self.prev_length[4]) / 0.01),
             self.msg_handler.conv_vel_out((leg_lenght[5] - self.prev_length[5]) / 0.01)]
         
-        self.task_pos.modify_data(self.pos_frame)
-        self.task_vel.modify_data(self.vel_frame)
+        self.task_pos.modify_data(self.msg_handler.pos_frame)
+        self.task_vel.modify_data(self.msg_handler.vel_frame)
 
         self.prev_length = leg_lenght
         
