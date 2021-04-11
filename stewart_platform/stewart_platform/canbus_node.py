@@ -41,9 +41,9 @@ class MessageHandler():
         output = int(out_pos + 0.5)
 
         if output > 255:
-            output = 255.0
+            output = 255
         elif output < 0:
-            output = 0.0
+            output = 0
 
         return output
 
@@ -136,7 +136,7 @@ class CANbus(Node):
         
         self.leg_pub.publish(msg)
 
-
+        '''
         leg_msg = PosVel()
 
         rx_msg = self.bus.recv(0.002)
@@ -164,6 +164,7 @@ class CANbus(Node):
             leg_msg.velocity_6 = float(rx_msg.data[5])
         
         self.feedback_pub.publish(leg_msg)
+        '''
 
 
 def main(args=None):
