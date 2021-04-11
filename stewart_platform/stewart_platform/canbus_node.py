@@ -84,8 +84,8 @@ class CAN_Tx_Rx(Node):
             self.conv_vel_out(msg.velocity_5),
             self.conv_vel_out(msg.velocity_6)]
         
-        self.task_pos.modify_data(pos)
-        self.task_vel.modify_data(vel)
+        self.task_pos.modify_data(self.pos)
+        self.task_vel.modify_data(self.vel)
 
         self.get_logger().info('CAN msgs transmitted')
 
