@@ -6,7 +6,7 @@ import numpy as np
 
 from rclpy.node import Node
 
-from stewart_interfaces.msg import PosVel, StartStop
+from stewart_interfaces.msg import PosVel, StartStop, DOF
 from stewart_platform import inverse_kinematics as ik
 
 
