@@ -68,24 +68,24 @@ class CAN_Tx_Rx(Node):
     def listener_callback(self, msg):
         self.get_logger().info('Setpoints received')
 
-        pos_tx = can.Message(arbitration_id=0xA0,data=[
+        self.pos.data=[
             self.conv_pos_out(msg.position_1),
             self.conv_pos_out(msg.position_2),
             self.conv_pos_out(msg.position_3),
             self.conv_pos_out(msg.position_4),
             self.conv_pos_out(msg.position_5),
-            self.conv_pos_out(msg.position_6),0], extended_id=False)
+            self.conv_pos_out(msg.position_6)]
         
-        vel_tx = can.Message(arbitration_id=0xA1,data=[
+        self.vel.data=[
             self.conv_vel_out(msg.velocity_1),
             self.conv_vel_out(msg.velocity_2),
             self.conv_vel_out(msg.velocity_3),
             self.conv_vel_out(msg.velocity_4),
             self.conv_vel_out(msg.velocity_5),
-            self.conv_vel_out(msg.velocity_6),0],extended_id=False)
+            self.conv_vel_out(msg.velocity_6)]
         
-        self.bus.send(pos_tx)
-        self.bus.send(vel_tx)
+        self.task_pos.modify_data(pos)
+        self.task_vel.modify_data(vel)
 
         self.get_logger().info('CAN msgs transmitted')
 
