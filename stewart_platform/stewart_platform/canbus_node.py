@@ -10,7 +10,7 @@ from stewart_interfaces.msg import PosVel, StartStop
 from stewart_platform import inverse_kinematics as ik
 
 
-class MessageHandler(self):
+class MessageHandler():
     def __init__(self):
         try:
             self.bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
