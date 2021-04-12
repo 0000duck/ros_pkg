@@ -2,68 +2,11 @@ import numpy as np
 from math import pi
 
 
-def oscillator(trans_adj, rot_adj, surge_a_adj, sway_a_adj,
-               heave_a_adj, roll_a_adj, pitch_a_adj, yaw_a_adj):
-    trans_freq = trans_adj  # translation signal frequency
-    rot_freq = rot_adj  # rotation signal frequency
-
-    # surge (x) values
-    surge_A = surge_a_adj
-    surge_bias = 0
-    surge_offset = 0
-
-    # sway (y) values
-    sway_A = sway_a_adj
-    sway_bias = 0
-    sway_offset = -pi / 2
-
-    # heave (z) values
-    heave_A = heave_a_adj
-    heave_bias = 0.0045
-    heave_offset = 0
-
-    # roll (alpha) values
-    roll_A = roll_a_adj
-    roll_bias = 0
-    roll_offset = 0
-
-    # pitch (beta) values
-    pitch_A = pitch_a_adj
-    pitch_bias = 0
-    pitch_offset = -pi / 2
-
-    # yaw (gamma) values
-    yaw_A = yaw_a_adj
-    yaw_bias = 0
-    yaw_offset = 0
-
-    # defining x positions based on sample rate and runtime
-    trans_x = np.arange(0, t_max, sample_rate)  # calculating translation points
-    rot_x = np.arange(0, t_max, sample_rate)  # calculating rotation points
-
-    # y position generation
-    # translation
-    surge_y = surge_A * np.sin(2 * pi * trans_x * trans_freq + surge_offset) + surge_bias
-    sway_y = sway_A * np.sin(2 * pi * trans_x * trans_freq + sway_offset) + sway_bias
-    heave_y = heave_A * np.sin(2 * pi * trans_x * trans_freq + heave_offset) + heave_bias
-
-    # rotation
-    roll_y = (roll_A * (pi / 180) * np.sin(2 * pi * rot_x * rot_freq + roll_offset)
-              + roll_bias)
-    pitch_y = (pitch_A * (pi / 180) * np.sin(2 * pi * rot_x * rot_freq + pitch_offset)
-               + pitch_bias)
-    yaw_y = (yaw_A * (pi / 180) * np.sin(2 * pi * rot_x * rot_freq + yaw_offset)
-             + yaw_bias)
-    
-    return surge_y, sway_y, heave_y, roll_y, pitch_y, yaw_y
-
-
-
 def calc_kinematics(x_in, y_in, z_in, alpha_in, beta_in, gamma_in):
     # defining input variables
     x = x_in
     y = y_in
-    z = 0.21065 + z_in
+    z = 0.16107 + z_in
 
     alpha = alpha_in
     beta = beta_in
@@ -183,11 +126,11 @@ def calc_kinematics(x_in, y_in, z_in, alpha_in, beta_in, gamma_in):
     l6 = np.sqrt(np.float_power(s6[0, 0], 2) + np.float_power(s6[1, 0], 2) + np.float_power(s6[2, 0], 2))
 
     # actuator stroke position
-    d1 = l1 - 0.17625
-    d2 = l2 - 0.17625
-    d3 = l3 - 0.17625
-    d4 = l4 - 0.17625
-    d5 = l5 - 0.17625
-    d6 = l6 - 0.17625
+    d1 = l1 - 0.181
+    d2 = l2 - 0.181
+    d3 = l3 - 0.181
+    d4 = l4 - 0.181
+    d5 = l5 - 0.181
+    d6 = l6 - 0.181
 
     return np.array([d1, d2, d3, d4, d5, d6])
