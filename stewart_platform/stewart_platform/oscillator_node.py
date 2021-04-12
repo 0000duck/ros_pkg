@@ -11,7 +11,7 @@ class SineWave():
     def __init__(self):
 
         self.trans_freq = 0.08
-        self.rot_freq = 0
+        self.rot_freq = 0.2
 
         self.surge_A = 0
         self.surge_bias = 0
