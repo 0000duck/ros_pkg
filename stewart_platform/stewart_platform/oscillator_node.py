@@ -21,15 +21,15 @@ class SineWave():
         self.sway_bias = 0
         self.sway_offset = -pi/2
 
-        self.heave_A = 0.048
+        self.heave_A = 0.02
         self.heave_bias = 0.04853
         self.heave_offset = 0
 
-        self.roll_A = 0
+        self.roll_A = 6
         self.roll_bias = 0
         self.roll_offset = 0
 
-        self.pitch_A = 0
+        self.pitch_A = 6
         self.pitch_bias = 0
         self.pitch_offset = -pi/2
 
