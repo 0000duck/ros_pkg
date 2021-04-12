@@ -10,7 +10,7 @@ from stewart_interfaces.msg import DOF
 class SineWave():
     def __init__(self):
 
-        self.trans_freq = 0.08
+        self.trans_freq = 0.25
         self.rot_freq = 0.2
 
         self.surge_A = 0
