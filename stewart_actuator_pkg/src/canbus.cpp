@@ -91,7 +91,7 @@ float* CANbus::send_data(const float stroke_len[], const float stroke_vel[])
     this->tx_vel2.data[3] = (uint8_t) out_vel[4];
     this->tx_vel2.data[4] = (uint8_t)(out_vel[5] >> 8);   // Actuator 6
     this->tx_vel2.data[5] = (uint8_t) out_vel[5];
-    this->tx_vel2.data[6] = (sign & 0b00111000) >> 3;
+    this->tx_vel2.data[6] = sign >> 3;
     
 
     write(this->_socket, &this->tx_len1, sizeof(struct can_frame));
