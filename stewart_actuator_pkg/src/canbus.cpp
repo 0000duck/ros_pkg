@@ -105,6 +105,7 @@ float* CANbus::send_data(const float stroke_len[], const float stroke_vel[])
 
     static float feedback[6];
     struct can_frame rx;
+    static uint8_t j = 0;
     
     bool msg1 = false;
     bool msg2 = false;
@@ -119,7 +120,7 @@ float* CANbus::send_data(const float stroke_len[], const float stroke_vel[])
 
         if (rx.can_id == 0xF0)
         {
-            uint8_t j = 0;
+            j = 0;
 
             for (uint8_t i = 0; i < 3; i++)
             {
@@ -135,7 +136,7 @@ float* CANbus::send_data(const float stroke_len[], const float stroke_vel[])
 
         if (rx.can_id == 0xF1)
         {
-            uint8_t j = 0;
+            j = 0;
             
             for (uint8_t i = 3; i < 6; i++)
             {
