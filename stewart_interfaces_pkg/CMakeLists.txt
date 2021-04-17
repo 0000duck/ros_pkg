@@ -1,10 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(stewart_interfaces)
-
-# Default to C99
-if(NOT CMAKE_C_STANDARD)
-  set(CMAKE_C_STANDARD 99)
-endif()
+project(stewart_interfaces_pkg)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
@@ -20,9 +15,13 @@ find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/PosVel.msg"
-  "msg/DOF.msg"
   "msg/StartStop.msg"
+  "msg/LegsLenVel.msg"
+  "msg/LenVel.msg"
+  "msg/TransformsPosVel.msg"
+  "msg/Transform.msg"
+  "msg/LegsLen.msg"
+  "msg/Len.msg"
 )
 
 ament_package()

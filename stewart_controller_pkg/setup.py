@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'stewart_platform'
+package_name = 'stewart_controller_pkg'
 
 setup(
     name=package_name,
@@ -20,8 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'canbus = stewart_platform.canbus_node:main',
-            'oscillator = stewart_platform.oscillator_node:main'
+            'controller = stewart_controller_pkg.controller_node:main'
         ],
     },
 )

@@ -1,17 +1,15 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>stewart_platform</name>
+  <name>stewart_controller_pkg</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="skotterud98@gmail.com">gruppe15</maintainer>
   <license>TODO: License declaration</license>
 
-  <depend>rclpy</depend>
-  <depend>python3-can</depend>
-  <depend>python3-numpy</depend>
-  <depend>can-utils</depend>
-  <exec_depend>stewart_interfaces</exec_depend>
+  <buildtool_depend>ament_python</buildtool_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>stewart_interfaces_pkg</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
