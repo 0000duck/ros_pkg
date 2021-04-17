@@ -23,9 +23,9 @@ void Oscillator::sample_sine(std::vector<std::vector<float>>& dof)
     dof[VEL][1] = sway_A * 2.*PI * trans_freq * cos(2*PI * trans_freq * *t_ptr + sway_offset);
     dof[VEL][2] = heave_A * 2.*PI * trans_freq * cos(2*PI * trans_freq * *t_ptr + heave_offset);
     
-    dof[VEL][3] = roll_A * 2.*PI * rot_freq * cos(2*PI * rot_freq * *t_ptr + roll_offset);
-    dof[VEL][4] = pitch_A * 2.*PI * rot_freq * cos(2*PI * rot_freq * *t_ptr + pitch_offset);
-    dof[VEL][5] = yaw_A * 2.*PI * rot_freq * cos(2*PI * rot_freq * *t_ptr + yaw_offset);
+    dof[VEL][3] = roll_A * (PI/180.) * 2.*PI * rot_freq * cos(2*PI * rot_freq * *t_ptr + roll_offset);
+    dof[VEL][4] = pitch_A * (PI/180.) * 2.*PI * rot_freq * cos(2*PI * rot_freq * *t_ptr + pitch_offset);
+    dof[VEL][5] = yaw_A * (PI/180.) * 2.*PI * rot_freq * cos(2*PI * rot_freq * *t_ptr + yaw_offset);
     
 }
 
