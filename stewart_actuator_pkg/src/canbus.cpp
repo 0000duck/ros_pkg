@@ -83,7 +83,7 @@ float* CANbus::send_data(const float stroke_len[], const float stroke_vel[])
     this->tx_vel1.data[3] = (uint8_t) out_vel[1];
     this->tx_vel1.data[4] = (uint8_t)(out_vel[2] >> 8);   // Actuator 3
     this->tx_vel1.data[5] = (uint8_t) out_vel[2];
-    this->tx_vel1.data[6] = sign & 0b00000111;
+    this->tx_vel1.data[6] = sign & 0b000111;
 
     this->tx_vel2.data[0] = (uint8_t)(out_vel[3] >> 8);   // Actuator 4
     this->tx_vel2.data[1] = (uint8_t) out_vel[3];
