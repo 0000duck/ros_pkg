@@ -53,13 +53,16 @@ float* CANbus::send_data(const float stroke_len[], const float stroke_vel[])
 
     for (uint8_t i = 0; i < 6; i++)
     {
-        out_len[i] = (uint16_t)(stroke_len[i] * 100000. + 0.5);
-        out_vel[i] = (uint16_t)(stroke_vel[i] * 1000000. + 0.5);
-
         if(stroke_vel[i] < 0)
         {
             sign &= ~(1UL << i);
+            out_vel[i] = (uint16_t)(-1. * stroke_vel[i] * 1000000. + 0.5);
         }
+        else
+        {
+            out_vel[i] = (uint16_t)(stroke_vel[i] * 1000000. + 0.5);
+        }
+        out_len[i] = (uint16_t)(stroke_len[i] * 100000. + 0.5);
     }
     
     this->tx_len1.data[0] = (uint8_t)(out_len[0] >> 8);   // Actuator 1
