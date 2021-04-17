@@ -26,9 +26,9 @@ class Oscillator
         float* t_ptr;
 
         float trans_freq = 0.25;
-        float rot_freq = 0.25;
+        float rot_freq = 0.3;
 
-        float surge_A = 0.;
+        float surge_A = 0.01;
         float surge_bias = 0.;
         float surge_offset = 0.;
 
@@ -36,15 +36,15 @@ class Oscillator
         float sway_bias = 0.;
         float sway_offset = -PI/2;
 
-        float heave_A = 0.;
+        float heave_A = 0.01;
         float heave_bias = 0.04853;
         float heave_offset = 0.;
 
-        float roll_A = 5.;
+        float roll_A = 6.;
         float roll_bias = 0.;
         float roll_offset = 0.;
 
-        float pitch_A = 5.;
+        float pitch_A = 6.;
         float pitch_bias = 0.;
         float pitch_offset = -PI/2;
 
