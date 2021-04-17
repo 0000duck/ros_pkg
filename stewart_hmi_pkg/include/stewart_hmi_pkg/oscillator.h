@@ -40,11 +40,11 @@ class Oscillator
         float heave_bias = 0.04853;
         float heave_offset = 0.;
 
-        float roll_A = 0.;
+        float roll_A = 5.;
         float roll_bias = 0.;
         float roll_offset = 0.;
 
-        float pitch_A = 0.;
+        float pitch_A = 5.;
         float pitch_bias = 0.;
         float pitch_offset = -PI/2;
 
