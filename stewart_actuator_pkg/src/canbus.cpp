@@ -94,22 +94,19 @@ float* CANbus::send_data(const float stroke_len[], const float stroke_vel[])
     this->tx_vel2.data[6] = (sign & 0b00111000) >> 3;
     
 
-    if (    (write(this->_socket, &this->tx_len1, sizeof(struct can_frame)) != sizeof(struct can_frame))
-        ||  (write(this->_socket, &this->tx_len2, sizeof(struct can_frame)) != sizeof(struct can_frame))
-        ||  (write(this->_socket, &this->tx_vel1, sizeof(struct can_frame)) != sizeof(struct can_frame))
-        ||  (write(this->_socket, &this->tx_vel2, sizeof(struct can_frame)) != sizeof(struct can_frame))   )
-    {
-        perror("Write");
-    }
+    write(this->_socket, &this->tx_len1, sizeof(struct can_frame));
+    write(this->_socket, &this->tx_len2, sizeof(struct can_frame));
+    write(this->_socket, &this->tx_vel1, sizeof(struct can_frame));
+    write(this->_socket, &this->tx_vel2, sizeof(struct can_frame));
 
 
-    static float feedback[6];
+    static float feedback[6] = {0., 0., 0., 0., 0., 0.};
     struct can_frame rx;
     static uint8_t j = 0;
     
     bool msg1 = false;
     bool msg2 = false;
-
+    /*
     while(!msg1 && !msg2)
     {
         if (read(this->_socket, &rx, sizeof(struct can_frame)) != sizeof(struct can_frame))
@@ -149,7 +146,7 @@ float* CANbus::send_data(const float stroke_len[], const float stroke_vel[])
             }
             msg2 = true;
         }
-    }
+    }*/
 
     return feedback;
 }
