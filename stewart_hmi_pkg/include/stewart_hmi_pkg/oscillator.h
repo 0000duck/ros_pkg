@@ -36,7 +36,7 @@ class Oscillator
         float sway_bias = 0.;
         float sway_offset = -PI/2;
 
-        float heave_A = 0.01;
+        float heave_A = 0.02;
         float heave_bias = 0.04853;
         float heave_offset = 0.;
 

@@ -16,7 +16,7 @@ class HMI : public rclcpp::Node
         HMI()
         : Node("hmi"), oscillator(new Oscillator(&_timecount))
         {   
-            RCLCPP_INFO(this->get_logger(), "HMI Node running!");
+            RCLCPP_INFO(this->get_logger(), "HMI node running!");
 
             transform_publisher = this->create_publisher<stewart_interfaces_pkg::msg::TransformsPosVel>(
                 "dof_ref", 1);
